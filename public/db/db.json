@@ -1,0 +1,362 @@
+[
+  {
+    "title": "Pepperoni Fresh",
+    "description": "Pepperoni, green pepper, mozzarella, marinara sauce",
+    "image": "img/pizza/pepperoni-fresh.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 3.99
+      },
+      {
+        "size": "m",
+        "cost": 5.99
+      },
+      {
+        "size": "l",
+        "cost": 7.99
+      }
+    ]
+  },
+  {
+    "title": "Chesse",
+    "description": "Mozzarella, marinara sauce",
+    "image": "img/pizza/chesse.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 3.99
+      },
+      {
+        "size": "m",
+        "cost": 5.99
+      },
+      {
+        "size": "l",
+        "cost": 7.99
+      }
+    ]
+  },
+  {
+    "title": "Sweet and sour Chicken",
+    "description": "Chicken, mozzarella, marinara sauce, sweet and sour sauce",
+    "image": "img/pizza/sweet-and-sour-chicken.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 3.99
+      },
+      {
+        "size": "m",
+        "cost": 5.99
+      },
+      {
+        "size": "l",
+        "cost": 7.99
+      }
+    ]
+  },
+  {
+    "title": "Ham and Cheese",
+    "description": "Ham, mozzarella, alfredo sauce",
+    "image": "img/pizza/ham-and-cheese.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 3.99
+      },
+      {
+        "size": "m",
+        "cost": 5.99
+      },
+      {
+        "size": "l",
+        "cost": 7.99
+      }
+    ]
+  },
+  {
+    "title": "Ham and Mushrooms",
+    "description": "Ham, mozzarella, mushrooms, marinara sauce",
+    "image": "img/pizza/ham-and-mushrooms.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.49
+      },
+      {
+        "size": "m",
+        "cost": 6.49
+      },
+      {
+        "size": "l",
+        "cost": 8.49
+      }
+    ]
+  },
+  {
+    "title": "Pepperoni",
+    "description": "Pepperoni, marinara sauce, extra mozzarella",
+    "image": "img/pizza/pepperoni.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Hawaiian",
+    "description": "Ham, extra mozzarella, marinara sauce, pineapple",
+    "image": "img/pizza/hawaiian.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Carbonara",
+    "description": "Bacon, cheddar and parmesan cheese, alfredo sauce, cherry tomatoes, garlic, italian herbs, red onion",
+    "image": "img/pizza/carbonara.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Four seasons",
+    "description": "Extra mozzarella, ham, pepperoni, tomatoes, feta cheese, mushrooms, marinara sauce, italian herbs",
+    "image": "img/pizza/four-seasons.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Margarita",
+    "description": "Extra mozzarella, tomatoes, marinara sauce, italian herbs",
+    "image": "img/pizza/margarita.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Vegetables and Mushrooms",
+    "description": "Mozzarella, mushrooms, red onion, feta cheese, tomatoes, marinara sauce, italian herbs, bell pepper, olives",
+    "image": "img/pizza/vegetables-and-mushrooms.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Pizza Pie",
+    "description": "Pineapples, lingonberries, condensed milk",
+    "image": "img/pizza/pizza-pie.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Baked Apple",
+    "description": "Apples, black currant, ice cream sauce, almond petals, cinnamon",
+    "image": "img/pizza/baked-apple.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Four Cheeses",
+    "description": "Extra mozzarella, cheddar and parmesan cheese, blue cheese, creamy sauce",
+    "image": "img/pizza/four-cheeses.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Chicken BBQ",
+    "description": "Chicken, BBQ sauce, marinara sauce, red onion, mozzarella, bacon",
+    "image": "img/pizza/chicken-bbq.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Meat",
+    "description": "Chicken, ham, spicy pepperoni, marinara sauce, spicy chorizo, mozzarella",
+    "image": "img/pizza/meat.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Double Pepperoni",
+    "description": "Double pepperoni, marinara sauce, extra mozzarella",
+    "image": "img/pizza/double-pepperoni.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  },
+  {
+    "title": "Super Meat",
+    "description": "Chicken, beef meatballs, spicy pepperoni, marinara sauce, spicy chorizo, mozzarella, bacon",
+    "image": "img/pizza/super-meat.jpg",
+    "category": "pizza",
+    "price": [
+      {
+        "size": "s",
+        "cost": 4.99
+      },
+      {
+        "size": "m",
+        "cost": 6.99
+      },
+      {
+        "size": "l",
+        "cost": 8.99
+      }
+    ]
+  }
+]

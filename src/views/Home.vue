@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="home">
 		<header class="delivery__header">
 			<img
 				src="../assets/logo.png"
@@ -13,6 +13,8 @@
 		</header>
 
 		<Categories />
+
+		<router-view></router-view>
 	</div>
 </template>
 
@@ -30,18 +32,18 @@ export default {
 <style lang="scss">
 .delivery {
 	&__logo {
-    display: inline-block;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: #ffd45b;
+		display: inline-block;
+		padding: 5px;
+		border-radius: 10px;
+		background-color: #ffd45b;
 		margin-right: 10px;
 	}
 
 	&__header {
 		display: flex;
 		align-items: center;
-    padding: 10px;
-    margin-bottom: 20px;
+		padding: 10px;
+		margin-bottom: 20px;
 	}
 
 	&__title {

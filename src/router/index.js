@@ -8,6 +8,18 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: () => import('../views/Home'),
+		children: [
+			{
+				path: '',
+				name: 'all',
+				component: () => import('../components/Catalog'),
+			},
+			{
+				path: 'categories/:categoryName',
+				name: 'category',
+				component: () => import('../components/Catalog'),
+			},
+		],
 	},
 ];
 
