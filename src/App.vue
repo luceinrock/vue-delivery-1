@@ -30,7 +30,7 @@ body {
 body,
 #app,
 .delivery {
-	background-color: #fff;
+	background-color: #f4f8ff;
 }
 
 .visually-hidden {

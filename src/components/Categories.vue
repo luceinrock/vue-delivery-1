@@ -1,32 +1,33 @@
 <template>
 	<div class="horizontal-scroll">
-		<ul class="categories">
-			<router-link
+		<scrollactive
+			class="categories"
+			active-class="active"
+			tag="ul"
+			:offset="70"
+			@itemchanged="onItemChanged"
+		>
+			<li
 				class="categories__item"
-				v-for="(category, index) in categories"
+				v-for="category in categories"
 				:key="category.title"
-				tag="li"
-				exact
-				:to="index > 0 ? '/categories/' + category.title : '/'"
-				active-class="active"
-				@click.native="goToCategory($event)"
 			>
-				<img
-					:src="category.icon"
-					:alt="'Vue delivery ' + category.title"
-					class="categories__icon"
-					width="64px"
-					height="64px"
-				/>
-
 				<a
-					:href="index > 0 ? '/categories/' + category.title : '/'"
-					class="categories__item-link"
+					:href="'#' + category.title"
+					class="categories__item-link scrollactive-item"
 				>
-					{{ category.title | capitalize }}
+					<img
+						:src="category.icon"
+						:alt="'Icon ' + category.title"
+						class="categories__icon"
+						width="64px"
+						height="64px"
+					/>
+
+					<span>{{ category.title | capitalize }}</span>
 				</a>
-			</router-link>
-		</ul>
+			</li>
+		</scrollactive>
 	</div>
 </template>
 
@@ -35,10 +36,6 @@ export default {
 	name: 'Categories',
 	data: () => ({
 		categories: [
-			{
-				title: 'all',
-				icon: require('@/assets/categoriesIcons/all.png'),
-			},
 			{
 				title: 'pizza',
 				icon: require('@/assets/categoriesIcons/pizza.png'),
@@ -59,29 +56,12 @@ export default {
 	}),
 
 	methods: {
-		goToCategory(e) {
-			const item = e.target.closest('li');
-			const link = item
-				.querySelector('.categories__item-link')
-				.href.split('/')
-				.splice(3);
-
-			const path = '/' + link.join('/');
-
-			if (this.$route.path !== path) {
-				this.$router.push({
-					name: 'category',
-					params: { categoryName: link[1] },
-				});
+		onItemChanged(event, currentItem) {
+			if (currentItem) {
+				location.hash = currentItem.hash;
+			} else {
+				history.replaceState(null, null, ' ');
 			}
-		},
-	},
-
-	filters: {
-		capitalize: function (value) {
-			if (!value) return '';
-			value = value.toString();
-			return value.charAt(0).toUpperCase() + value.slice(1);
 		},
 	},
 };
@@ -89,6 +69,9 @@ export default {
 
 <style lang="scss">
 .horizontal-scroll {
+	position: sticky;
+	top: 0;
+	top: 10px;
 	overflow: auto;
 	margin: 0 10px 30px 10px;
 	background-color: #ffd45b;
@@ -104,33 +87,33 @@ export default {
 	min-width: fit-content;
 
 	&__item {
-		display: flex;
-		flex-direction: column;
-		min-width: 60px;
-		align-items: center;
 		margin-right: 10px;
-		padding: 5px;
-		border-radius: 5px;
 		cursor: pointer;
 
 		&:last-child {
 			margin-right: 0;
 		}
 
-		&:hover {
-			background-color: rgba(0, 0, 0, 0.061);
-		}
-
-		&.active {
-			background-color: #ffda73;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.198);
-		}
-
 		&-link {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			min-width: 60px;
+			padding: 5px;
+			border-radius: 5px;
 			color: inherit;
 			text-decoration: none;
 			font-size: 0.7rem;
 			font-weight: 700;
+
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.061);
+			}
+
+			&.active {
+				background-color: #ffda73;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.198);
+			}
 		}
 	}
 

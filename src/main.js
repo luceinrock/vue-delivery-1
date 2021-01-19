@@ -4,8 +4,16 @@ import router from './router';
 import store from './store';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import VueScrollactive from 'vue-scrollactive';
+
+
+import capitalize from './filters/capitalize.filter';
 
 Vue.use(VueAxios, axios);
+Vue.use(VueScrollactive);
+
+Vue.filter('capitalize', capitalize);
+
 Vue.config.productionTip = false;
 
 new Vue({

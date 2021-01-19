@@ -8,18 +8,6 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: () => import('../views/Home'),
-		children: [
-			{
-				path: '',
-				name: 'all',
-				component: () => import('../components/Catalog'),
-			},
-			{
-				path: 'categories/:categoryName',
-				name: 'category',
-				component: () => import('../components/Catalog'),
-			},
-		],
 	},
 ];
 
@@ -27,6 +15,15 @@ const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
+	scrollBehavior(to, from, savedPosition) {
+		if (to.hash) {
+			return { selector: to.hash };
+		} else if (savedPosition) {
+			return savedPosition;
+		} else {
+			return { x: 0, y: 0 };
+		}
+	},
 });
 
 export default router;

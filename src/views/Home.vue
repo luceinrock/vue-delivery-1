@@ -1,5 +1,5 @@
 <template>
-	<div class="home">
+	<div class="home" ref="home">
 		<header class="delivery__header">
 			<img
 				src="../assets/logo.png"
@@ -13,19 +13,20 @@
 		</header>
 
 		<Categories />
-
-		<router-view></router-view>
+		<Catalog />
 	</div>
 </template>
 
 <script>
 import Categories from '../components/Categories';
+import Catalog from '../components/Catalog';
 
 export default {
 	name: 'home',
 	components: {
 		Categories,
-	},
+		Catalog,
+	}
 };
 </script>
 

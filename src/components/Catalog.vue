@@ -1,32 +1,50 @@
 <template>
 	<div class="products">
-		<ul class="products__list">
-			<li class="products__item" v-for="item in products" :key="item.title">
-				<div class="products__item-wrapper">
-					<img
-						:src="item.image"
-						:alt="item.title"
-						class="products__img"
-						width="233"
-						height="233"
-					/>
+		<section
+			class="product"
+			v-for="(product, key) in products"
+			:key="key"
+			:id="key"
+		>
+			<h2 class="product__title">{{ key | capitalize }}</h2>
 
-					<div class="products__item-info">
-						<span class="products__item-title">
-							{{ item.title }}
-						</span>
+			<ul class="products__list">
+				<li
+					class="products__item"
+					v-for="item in products[key]"
+					:key="item.title"
+				>
+					<div class="products__item-wrapper">
+						<img
+							:src="item.image"
+							:alt="item.title"
+							class="products__img"
+							width="233"
+							height="233"
+						/>
 
-						<span class="products__item-description">
-							{{ item.description }}
-						</span>
+						<div class="products__item-info">
+							<span class="products__item-title">
+								{{ item.title }}
+							</span>
 
-						<span class="products__item-price">
-							FROM {{ item.price[0].cost }} $
-						</span>
+							<span class="products__item-description">
+								{{ item.description }}
+							</span>
+
+							<span class="products__item-price">
+								{{
+									item.price.length > 1
+										? `FROM ${item.price[0]}`
+										: `${item.price[0]}`
+								}}
+								$
+							</span>
+						</div>
 					</div>
-				</div>
-			</li>
-		</ul>
+				</li>
+			</ul>
+		</section>
 	</div>
 </template>
 
@@ -42,6 +60,14 @@ export default {
 </script>
 
 <style lang="scss">
+.product {
+	padding-top: 20px;
+
+	&__title {
+		margin: 0 0 20px 10px;
+	}
+}
+
 .products {
 	width: 100%;
 	box-sizing: border-box;
@@ -61,17 +87,18 @@ export default {
 		flex: 0 1 50%;
 		padding: 10px;
 		box-sizing: border-box;
+		display: flex;
 
 		&-wrapper {
 			padding-top: 10px;
-			margin-bottom: 20px;
 			border-radius: 20px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			overflow: hidden;
-			min-height: 260px;
 			box-shadow: 0 3px 10px #e0dfdf;
+			background-color: #fff;
+			flex-grow: 1;
 		}
 
 		&-info {
@@ -79,7 +106,7 @@ export default {
 			flex-direction: column;
 			align-self: flex-start;
 			flex: 1 1 auto;
-			padding: 10px 10px 20px 10px;
+			padding: 10px 10px 15px 10px;
 			width: 100%;
 			box-sizing: border-box;
 			border-radius: 5px;
@@ -91,15 +118,30 @@ export default {
 		}
 
 		&-description {
+			position: relative;
 			display: inline-block;
-			color: #828282;
+			height: 2rem;
+			margin-bottom: 10px;
+			color: #919191;
 			font-size: 0.6rem;
-			margin-bottom: 5px;
+			overflow: hidden;
+
+			&::after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background-image: linear-gradient(to top, #fff, transparent 10px);
+			}
 		}
 
 		&-price {
-			font-weight: 700;
 			margin-top: auto;
+			font-weight: 700;
+			font-size: 0.9rem;
+			color: #ffd45b;
 		}
 	}
 
