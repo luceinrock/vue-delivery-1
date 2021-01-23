@@ -45,4 +45,25 @@ body,
 	clip: rect(0 0 0 0);
 	overflow: hidden;
 }
+
+.btn-bag {
+	display: flex;
+	background-color: #ffd45b;
+	width: 35px;
+	height: 35px;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	border: none;
+	cursor: pointer;
+
+	& > .material-icons {
+		pointer-events: none;
+	}
+}
+
+.title {
+	margin: 0;
+	font-size: 1.3rem;
+}
 </style>

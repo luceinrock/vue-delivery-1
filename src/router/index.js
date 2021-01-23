@@ -9,21 +9,18 @@ const routes = [
 		name: 'home',
 		component: () => import('../views/Home'),
 	},
+
+	{
+		path: '/cart',
+		name: 'cart',
+		component: () => import('../views/Cart'),
+	},
 ];
 
 const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
-	scrollBehavior(to, from, savedPosition) {
-		if (to.hash) {
-			return { selector: to.hash };
-		} else if (savedPosition) {
-			return savedPosition;
-		} else {
-			return { x: 0, y: 0 };
-		}
-	},
 });
 
 export default router;

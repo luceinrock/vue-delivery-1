@@ -57,10 +57,8 @@ export default {
 
 	methods: {
 		onItemChanged(event, currentItem) {
-			if (currentItem) {
-				location.hash = currentItem.hash;
-			} else {
-				history.replaceState(null, null, ' ');
+			if (currentItem && this.$route.hash !== currentItem.hash) {
+				this.$router.replace(currentItem.hash);
 			}
 		},
 	},
@@ -71,11 +69,12 @@ export default {
 .horizontal-scroll {
 	position: sticky;
 	top: 0;
-	top: 10px;
+	top: 5px;
 	overflow: auto;
 	margin: 0 10px 30px 10px;
 	background-color: #ffd45b;
 	border-radius: 10px;
+	z-index: 100;
 }
 
 .categories {

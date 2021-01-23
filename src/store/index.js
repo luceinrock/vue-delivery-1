@@ -4,6 +4,8 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
+import cart from './cart';
+
 export default new Vuex.Store({
 	state: {
 		products: null,
@@ -13,6 +15,7 @@ export default new Vuex.Store({
 			state.products = products;
 		},
 	},
+
 	actions: {
 		async GET_PRODUCTS({ commit }) {
 			axios
@@ -20,5 +23,6 @@ export default new Vuex.Store({
 				.then((response) => commit('initProducts', response.data));
 		},
 	},
-	modules: {},
+
+	modules: { cart },
 });
