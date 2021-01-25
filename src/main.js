@@ -7,12 +7,12 @@ import VueAxios from 'vue-axios';
 import VueScrollactive from 'vue-scrollactive';
 
 import capitalize from './filters/capitalize.filter';
+import toFixed from './filters/toFixed.filter';
 Vue.filter('capitalize', capitalize);
-
+Vue.filter('toFixed', toFixed);
 
 Vue.use(VueAxios, axios);
 Vue.use(VueScrollactive);
-
 
 Vue.config.productionTip = false;
 

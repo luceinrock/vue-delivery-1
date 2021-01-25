@@ -48,12 +48,24 @@ export default {
 	},
 
 	getters: {
-		getCartLength(state) {
+		isCartEmpty(state) {
+			return state.cart.length === 0;
+		},
+
+		cartLength(state) {
 			return state.cart.length;
 		},
 
 		getCartList(state) {
 			return state.cart;
+		},
+
+		getTotalPrice(state) {
+			const totalPrice = state.cart.reduce((prev, current) => {
+				return current.price * current.amount + prev;
+			}, 0);
+
+			return totalPrice;
 		},
 	},
 };

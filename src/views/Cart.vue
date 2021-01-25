@@ -2,7 +2,7 @@
 	<div class="cart">
 		<h1 class="cart__title title">Cart</h1>
 
-		<ul class="cart__list">
+		<ul class="cart__list" v-if="!isCartEmpty">
 			<li class="cart__item" v-for="(item, index) in cartList" :key="index">
 				<img :src="item.image" :alt="item.title" class="cart__item-img" />
 
@@ -12,7 +12,7 @@
 					</span>
 
 					<span class="cart__item-total-cost">
-						$ {{ (item.price * item.amount).toFixed(2) }}
+						$ {{ (item.price * item.amount) | toFixed }}
 					</span>
 				</div>
 
@@ -20,10 +20,27 @@
 					class="cart__counter"
 					@increment="addOne(index)"
 					@decrement="decreaseOne(index)"
-					>{{ item.amount }}</Counter
-				>
+					>{{ item.amount }}
+				</Counter>
 			</li>
 		</ul>
+
+		<form class="cart__total" v-if="!isCartEmpty">
+			<div class="cart__total-row">
+				<span class="cart__total-text">Total</span>
+				<span class="cart__total-price">$ {{ totalPrice | toFixed }}</span>
+			</div>
+
+			<button type="submit" class="cart__total-submit">Pay</button>
+		</form>
+
+		<div class="cart__empty" v-if="isCartEmpty">
+			<img
+				:src="require('@/assets/emptyCart.png')"
+				alt="Empty cart"
+				class="cart__empty-img"
+			/>
+		</div>
 	</div>
 </template>
 
@@ -36,6 +53,14 @@ export default {
 	computed: {
 		cartList() {
 			return this.$store.getters.getCartList;
+		},
+
+		totalPrice() {
+			return this.$store.getters.getTotalPrice;
+		},
+
+		isCartEmpty() {
+			return this.$store.getters.isCartEmpty;
 		},
 	},
 
@@ -52,17 +77,17 @@ export default {
 
 <style lang="scss">
 .cart {
-	padding: 0 10px;
-
+	padding-bottom: 140px;
+	flex-grow: 1;
+	
 	&__title {
-		margin-top: 10px;
-		margin-bottom: 20px;
+		margin: 10px 0 20px 15px;
 		font-size: 1.7rem;
 	}
 
 	&__list {
 		margin: 0;
-		padding: 0;
+		padding: 0 10px;
 		list-style: none;
 		display: flex;
 		flex-direction: column;
@@ -96,6 +121,53 @@ export default {
 
 	&__counter {
 		margin-left: auto;
+	}
+
+	&__total {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #fff;
+		padding: 20px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+
+		&-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+
+		&-text {
+			font-size: 1.5rem;
+			font-weight: 700;
+			letter-spacing: 0.1rem;
+		}
+
+		&-price {
+			font-size: 1.5rem;
+			font-weight: 700;
+		}
+
+		&-submit {
+			display: block;
+			width: 100%;
+			background-color: #040a22;
+			color: #fff;
+			border: none;
+			padding: 10px 0;
+			cursor: pointer;
+		}
+	}
+
+	&__empty {
+		padding: 0 10px;
+
+		&-img {
+			max-width: 100%;
+		}
 	}
 }
 </style>

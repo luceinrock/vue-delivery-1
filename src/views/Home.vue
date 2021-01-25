@@ -1,15 +1,15 @@
 <template>
-	<div class="home" ref="home">
-		<header class="delivery__header">
+	<div class="home">
+		<header class="home__header">
 			<img
 				src="../assets/logo.png"
 				alt="vue deliver logo"
-				class="delivery__logo"
+				class="home__logo"
 				width="50"
 				height="50"
 			/>
 
-			<h1 class="delivery__title title">Vue delivery</h1>
+			<h1 class="home__title">Vue delivery</h1>
 		</header>
 
 		<Categories />
@@ -17,8 +17,8 @@
 		<Catalog />
 
 		<cart-button
-			class="delivery__add-to-cart"
-			:class="{ active: cartLength }"
+			class="home__add-to-cart"
+			:class="{ active: !isCartEmpty }"
 			@click="goToCart"
 		>
 			{{ cartLength }} items
@@ -40,8 +40,12 @@ export default {
 	},
 
 	computed: {
+		isCartEmpty() {
+			return this.$store.getters.isCartEmpty;
+		},
+
 		cartLength() {
-			return this.$store.getters.getCartLength;
+			return this.$store.getters.cartLength;
 		},
 	},
 
@@ -54,13 +58,20 @@ export default {
 </script>
 
 <style lang="scss">
-.delivery {
+.home {
+	background-color: #f4f8ff;
+
 	&__logo {
 		display: inline-block;
 		padding: 5px;
 		border-radius: 10px;
 		background-color: #ffd45b;
 		margin-right: 10px;
+	}
+
+	&__title {
+		margin: 0;
+		font-size: 1.3rem;
 	}
 
 	&__header {

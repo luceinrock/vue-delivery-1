@@ -1,8 +1,6 @@
 <template>
 	<div id="app">
-		<div class="delivery">
-			<router-view></router-view>
-		</div>
+		<router-view></router-view>
 	</div>
 </template>
 
@@ -21,16 +19,19 @@ export default {
 html {
 	font-family: Roboto, sans-serif;
 	font-size: 18px;
+	min-height: 100%;
+	display: flex;
 }
 
 body {
+	display: flex;
+	flex-grow: 1;
 	color: #202020;
 }
 
-body,
-#app,
-.delivery {
-	background-color: #f4f8ff;
+#app {
+	display: flex;
+	flex-grow: 1;
 }
 
 .visually-hidden {
@@ -63,7 +64,20 @@ body,
 }
 
 .title {
+	position: relative;
 	margin: 0;
+	margin-left: 5px;
+	display: inline-block;
 	font-size: 1.3rem;
+
+	&::before {
+		position: absolute;
+		content: '';
+		left: -5px;
+		display: block;
+		height: 100%;
+		width: 5px;
+		background-color: #ffd45b;
+	}
 }
 </style>

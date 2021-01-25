@@ -1,6 +1,10 @@
 <template>
 	<li class="products__item">
-		<div class="products__item-wrapper">
+		<router-link
+			tag="div"
+			:to="'product/' + item.code"
+			class="products__item-wrapper"
+		>
 			<img
 				:src="item.image"
 				:alt="item.title"
@@ -28,14 +32,17 @@
 						$
 					</span>
 
-					<button class="products__item-buy btn-bag" @click="addToCart(item)">
+					<button
+						class="products__item-buy btn-bag"
+						@click.stop="addToCart(item)"
+					>
 						<span class="material-icons material-icons-outlined">
 							shopping_bag
 						</span>
 					</button>
 				</div>
 			</div>
-		</div>
+		</router-link>
 	</li>
 </template>
 

@@ -24,5 +24,37 @@ export default new Vuex.Store({
 		},
 	},
 
+	getters: {
+		product: (state) => (code) => {
+			const products = state.products;
+			let product = null;
+
+			for (let key in products) {
+				product = products[key].find((item) => item.code === +code);
+
+				if (product) {
+					break;
+				}
+			}
+
+			return product;
+		},
+
+		productBaseCost: (state) => (code) => {
+			const products = state.products;
+			let product = null;
+
+			for (let key in products) {
+				product = products[key].find((item) => item.code === +code);
+
+				if (product) {
+					break;
+				}
+			}
+
+			return product.price[0];
+		},
+	},
+
 	modules: { cart },
 });

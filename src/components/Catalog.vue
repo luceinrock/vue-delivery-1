@@ -1,12 +1,12 @@
 <template>
 	<div class="products">
 		<section
-			class="product"
+			class="products__wrapper"
 			v-for="(product, key) in products"
 			:key="key"
 			:id="key"
 		>
-			<h2 class="product__title">{{ key | capitalize }}</h2>
+			<h2 class="products__title title">{{ key | capitalize }}</h2>
 
 			<ul class="products__list">
 				<ProductsItem v-for="item in product" :key="item.title" :item="item" />
@@ -30,19 +30,21 @@ export default {
 </script>
 
 <style lang="scss">
-.product {
-	padding-top: 20px;
-
-	&__title {
-		margin: 0 0 20px 10px;
-	}
-}
-
 .products {
 	width: 100%;
 	box-sizing: border-box;
 	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
+
+	&__wrapper {
+		padding-top: 20px;
+		margin-bottom: 50px;
+	}
+
+	&__title {
+		margin: 0 0 20px 15px;
+		font-size: 1.5rem;
+	}
 
 	&__list {
 		margin: 0;
