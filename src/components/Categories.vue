@@ -5,7 +5,7 @@
 			active-class="active"
 			tag="ul"
 			:offset="70"
-			@itemchanged="onItemChanged"
+			:modifyUrl="false"
 		>
 			<li
 				class="categories__item"
@@ -34,33 +34,27 @@
 <script>
 export default {
 	name: 'Categories',
-	data: () => ({
-		categories: [
-			{
-				title: 'pizza',
-				icon: require('@/assets/categoriesIcons/pizza.png'),
-			},
-			{
-				title: 'burgers',
-				icon: require('@/assets/categoriesIcons/burger.png'),
-			},
-			{
-				title: 'drinks',
-				icon: require('@/assets/categoriesIcons/drinks.png'),
-			},
-			{
-				title: 'desserts',
-				icon: require('@/assets/categoriesIcons/dessert.png'),
-			},
-		],
-	}),
-
-	methods: {
-		onItemChanged(event, currentItem) {
-			if (currentItem && this.$route.hash !== currentItem.hash) {
-				this.$router.replace(currentItem.hash);
-			}
-		},
+	data() {
+		return {
+			categories: [
+				{
+					title: 'pizza',
+					icon: require('@/assets/categoriesIcons/pizza.png'),
+				},
+				{
+					title: 'burgers',
+					icon: require('@/assets/categoriesIcons/burger.png'),
+				},
+				{
+					title: 'drinks',
+					icon: require('@/assets/categoriesIcons/drinks.png'),
+				},
+				{
+					title: 'desserts',
+					icon: require('@/assets/categoriesIcons/dessert.png'),
+				},
+			]
+		};
 	},
 };
 </script>
@@ -104,10 +98,6 @@ export default {
 			text-decoration: none;
 			font-size: 0.7rem;
 			font-weight: 700;
-
-			&:hover {
-				background-color: rgba(0, 0, 0, 0.061);
-			}
 
 			&.active {
 				background-color: #ffda73;

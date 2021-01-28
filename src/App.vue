@@ -1,13 +1,29 @@
 <template>
 	<div id="app">
-		<router-view></router-view>
+		<transition :name="transitionName" mode="out-in">
+			<router-view></router-view>
+		</transition>
 	</div>
 </template>
 
 <script>
 export default {
+	data() {
+		return {
+			transitionName: null,
+		};
+	},
+
 	created() {
 		this.$store.dispatch('GET_PRODUCTS');
+	},
+
+	watch: {
+		$route(to, from) {
+			const toDepth = to.path.split('/').length;
+			const fromDepth = from.path.split('/').length;
+			this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+		},
 	},
 };
 </script>
@@ -63,6 +79,23 @@ body {
 	}
 }
 
+.btn-back {
+	display: flex;
+	padding: 2px;
+	text-decoration: none;
+	color: #000;
+	background-color: #ffd45b;
+	border-radius: 50%;
+
+	&:hover {
+		background-color: #f1c857;
+	}
+
+	& > span {
+		font-size: 1.8rem;
+	}
+}
+
 .title {
 	position: relative;
 	margin: 0;
@@ -79,5 +112,21 @@ body {
 		width: 5px;
 		background-color: #ffd45b;
 	}
+}
+
+.slide-right-enter-active {
+	transition: all 0.3s;
+}
+
+.slide-right-enter {
+	transform: translate(-100%);
+}
+
+.slide-left-enter-active {
+	transition: all 0.3s;
+}
+
+.slide-left-enter {
+	transform: translate(100%);
 }
 </style>

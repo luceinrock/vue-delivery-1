@@ -1,6 +1,16 @@
 <template>
 	<div class="cart">
-		<h1 class="cart__title title">Cart</h1>
+		<header class="cart__header">
+			<h1 class="cart__title title">Cart</h1>
+
+			<a
+				href="/"
+				class="product__back btn-back"
+				@click.prevent="$router.go(-1)"
+			>
+				<span class="material-icons"> keyboard_backspace </span>
+			</a>
+		</header>
 
 		<ul class="cart__list" v-if="!isCartEmpty">
 			<li class="cart__item" v-for="(item, index) in cartList" :key="index">
@@ -83,7 +93,7 @@ export default {
 
 		deleteItemInCart(index) {
 			this.$store.commit('deleteFromCart', index);
-		}
+		},
 	},
 };
 </script>
@@ -92,9 +102,18 @@ export default {
 .cart {
 	padding-bottom: 140px;
 	flex-grow: 1;
+	padding-top: 20px;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 10px 0 15px;
+		margin-bottom: 20px;
+	}
 
 	&__title {
-		margin: 10px 0 20px 15px;
+		margin: 0;
 		font-size: 1.7rem;
 	}
 

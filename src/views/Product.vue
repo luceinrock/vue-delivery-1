@@ -2,7 +2,11 @@
 	<section class="product">
 		<template>
 			<header class="product__header">
-				<a href="/" class="product__back" @click.prevent="$router.go(-1)">
+				<a
+					href="/"
+					class="product__back btn-back"
+					@click.prevent="$router.go(-1)"
+				>
 					<span class="material-icons"> keyboard_backspace </span>
 				</a>
 
@@ -74,7 +78,7 @@ export default {
 	data() {
 		return {
 			counter: 1,
-			picked: null
+			picked: null,
 		};
 	},
 
@@ -113,7 +117,7 @@ export default {
 
 	components: {
 		Counter,
-		CartButton
+		CartButton,
 	},
 };
 </script>
@@ -132,23 +136,6 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-	}
-
-	&__back {
-		display: flex;
-		padding: 2px;
-		text-decoration: none;
-		color: #000;
-		background-color: #ffd45b;
-		border-radius: 50%;
-
-		&:hover {
-			background-color: #f1c857;
-		}
-
-		& > span {
-			font-size: 1.8rem;
-		}
 	}
 
 	&__to-cart {
