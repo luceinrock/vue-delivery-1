@@ -1,6 +1,10 @@
 <template>
 	<div id="app">
-		<transition :name="transitionName" mode="out-in">
+		<transition
+			:name="transitionName"
+			mode="out-in"
+			@after-leave="$root.$emit('triggerScroll')"
+		>
 			<router-view></router-view>
 		</transition>
 	</div>
