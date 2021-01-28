@@ -12,7 +12,11 @@
 					</span>
 
 					<span class="cart__item-total-cost">
-						$ {{ (item.price * item.amount) | toFixed }}
+						$ {{ (item.cost * item.amount) | toFixed }}
+					</span>
+
+					<span class="cart__item-size">
+						{{ item.size | capitalize }}
 					</span>
 				</div>
 
@@ -22,6 +26,10 @@
 					@decrement="decreaseOne(index)"
 					>{{ item.amount }}
 				</Counter>
+
+				<button class="cart__item-delete" @click="deleteItemInCart(index)">
+					<span class="material-icons"> clear </span>
+				</button>
 			</li>
 		</ul>
 
@@ -56,7 +64,7 @@ export default {
 		},
 
 		totalPrice() {
-			return this.$store.getters.getTotalPrice;
+			return this.$store.getters.TotalPrice;
 		},
 
 		isCartEmpty() {
@@ -66,11 +74,16 @@ export default {
 
 	methods: {
 		addOne(index) {
-			this.$store.dispatch('addToQuantity', index);
+			this.$store.dispatch('addToQuantity', { index, amount: 1 });
 		},
+
 		decreaseOne(index) {
 			this.$store.dispatch('subtractFromQuantity', index);
 		},
+
+		deleteItemInCart(index) {
+			this.$store.commit('deleteFromCart', index);
+		}
 	},
 };
 </script>
@@ -79,7 +92,7 @@ export default {
 .cart {
 	padding-bottom: 140px;
 	flex-grow: 1;
-	
+
 	&__title {
 		margin: 10px 0 20px 15px;
 		font-size: 1.7rem;
@@ -117,10 +130,30 @@ export default {
 		&-total-cost {
 			font-weight: 700;
 		}
+
+		&-size {
+			color: rgb(163, 163, 163);
+		}
+
+		&-delete {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			background: none;
+			border: none;
+			color: rgb(163, 163, 163);
+			cursor: pointer;
+
+			&:hover {
+				color: #000;
+			}
+		}
 	}
 
 	&__counter {
 		margin-left: auto;
+		margin-right: 10px;
 	}
 
 	&__total {
@@ -159,6 +192,10 @@ export default {
 			border: none;
 			padding: 10px 0;
 			cursor: pointer;
+
+			&:hover {
+				background-color: #040a22de;
+			}
 		}
 	}
 

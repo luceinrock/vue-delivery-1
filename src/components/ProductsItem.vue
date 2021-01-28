@@ -25,9 +25,9 @@
 				<div class="products__item-row">
 					<span class="products__item-price">
 						{{
-							item.price.length > 1
-								? `FROM ${item.price[0]}`
-								: `${item.price[0]}`
+							item.meta.length > 1
+								? `FROM ${item.meta[0].cost}`
+								: `${item.meta[0].cost}`
 						}}
 						$
 					</span>
@@ -52,7 +52,12 @@ export default {
 	props: ['item'],
 	methods: {
 		addToCart(item) {
-			const product = { ...item, price: item.price[0], amount: 1 };
+			const product = {
+				...item,
+				cost: item.meta[0].cost,
+				size: item.meta[0].size,
+				amount: 1,
+			};
 			this.$store.dispatch('addProduct', product);
 		},
 	},
@@ -76,6 +81,12 @@ export default {
 		box-shadow: 0 3px 10px #e0dfdf;
 		background-color: #fff;
 		flex-grow: 1;
+		transition: transform 0.2s;
+		cursor: pointer;
+
+		&:hover {
+			transform: translateY(-3px);
+		}
 	}
 
 	&-info {
@@ -128,8 +139,12 @@ export default {
 
 	&-price {
 		font-weight: 700;
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		color: #ffaa5b;
+	}
+
+	&-buy:hover {
+		background-color: #f1c855;
 	}
 }
 </style>

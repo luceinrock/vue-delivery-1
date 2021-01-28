@@ -16,13 +16,15 @@
 
 		<Catalog />
 
-		<cart-button
-			class="home__add-to-cart"
-			:class="{ active: !isCartEmpty }"
-			@click="goToCart"
-		>
-			{{ cartLength }} items
-		</cart-button>
+		<transition name="fadeBottom">
+			<cart-button
+				class="home__add-to-cart"
+				@click="goToCart"
+				v-show="cartLength"
+			>
+				{{ cartLength }} items
+			</cart-button>
+		</transition>
 	</div>
 </template>
 
@@ -85,7 +87,15 @@ export default {
 		position: fixed;
 		bottom: 20px;
 		left: 50%;
-		transform: translateX(-50%);
+		transform: translate(-50%, 0);
 	}
+}
+
+.fadeBottom-enter-active {
+	transition: all 0.4s;
+}
+.fadeBottom-enter {
+	opacity: 0;
+	transform: translate(-50%, 200%);
 }
 </style>

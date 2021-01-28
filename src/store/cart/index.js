@@ -8,8 +8,8 @@ export default {
 			state.cart.push(product);
 		},
 
-		addToQuantity(state, index) {
-			state.cart[index].amount++;
+		addToQuantity(state, { index, amount }) {
+			state.cart[index].amount = state.cart[index].amount + amount;
 		},
 
 		subtractFromQuantity(state, index) {
@@ -24,11 +24,11 @@ export default {
 	actions: {
 		addProduct({ state, commit }, product) {
 			const indexInCart = state.cart.findIndex(
-				(item) => item.price === product.price && item.title === product.title
+				(item) => item.size === product.size && item.title === product.title
 			);
 
 			if (indexInCart >= 0) {
-				commit('addToQuantity', indexInCart);
+				commit('addToQuantity', { index: indexInCart, amount: product.amount });
 			} else {
 				commit('addProduct', product);
 			}
@@ -53,16 +53,16 @@ export default {
 		},
 
 		cartLength(state) {
-			return state.cart.length;
+			return state.cart.reduce((prev, item) => prev + item.amount, 0);
 		},
 
 		getCartList(state) {
 			return state.cart;
 		},
 
-		getTotalPrice(state) {
+		TotalPrice(state) {
 			const totalPrice = state.cart.reduce((prev, current) => {
-				return current.price * current.amount + prev;
+				return current.cost * current.amount + prev;
 			}, 0);
 
 			return totalPrice;

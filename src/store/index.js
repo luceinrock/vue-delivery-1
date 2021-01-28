@@ -18,9 +18,12 @@ export default new Vuex.Store({
 
 	actions: {
 		async GET_PRODUCTS({ commit }) {
-			axios
-				.get('http://localhost:8080/db/db.json')
-				.then((response) => commit('initProducts', response.data));
+			try {
+				const response = await axios.get('http://localhost:8080/db/db.json');
+				commit('initProducts', response.data);
+			} catch (error) {
+				console.log(error);
+			}
 		},
 	},
 
@@ -40,7 +43,7 @@ export default new Vuex.Store({
 			return product;
 		},
 
-		productBaseCost: (state) => (code) => {
+		productDefaultSize: (state) => (code) => {
 			const products = state.products;
 			let product = null;
 
@@ -52,7 +55,7 @@ export default new Vuex.Store({
 				}
 			}
 
-			return product.price[0];
+			return product.meta[0];
 		},
 	},
 

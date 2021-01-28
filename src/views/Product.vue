@@ -1,63 +1,66 @@
 <template>
-	<div class="product">
-		<h1 class="product__title">{{ product.title }}</h1>
+	<section class="product">
+		<template>
+			<header class="product__header">
+				<a href="/" class="product__back" @click.prevent="$router.go(-1)">
+					<span class="material-icons"> keyboard_backspace </span>
+				</a>
 
-		<div class="product__img-wrapper">
-			<img
-				:src="product.image"
-				:alt="`${product.title} ${product.category}`"
-				class="product__img"
-			/>
-		</div>
+				<router-link to="/cart" class="btn-bag product__to-cart">
+					<span class="material-icons material-icons-outlined">
+						shopping_bag
+					</span>
 
-		<p class="product__description">
-			{{ product.description }}
-		</p>
+					<span class="product__cart-length" v-show="cartLength">{{
+						cartLength
+					}}</span>
+				</router-link>
+			</header>
 
-		<p class="product__price">${{ product.price[0] | toFixed }}</p>
+			<h1 class="product__title">{{ product.title }}</h1>
 
-		<div class="product__sizes" v-if="product.price.length > 1">
-			<input
-				class="product__size-pick"
-				type="radio"
-				id="s"
-				:value="product.price[0]"
-				v-model="picked"
-			/>
-			<label for="s">S</label>
+			<div class="product__img-wrapper">
+				<img
+					:src="product.image"
+					:alt="`${product.title} ${product.category}`"
+					class="product__img"
+				/>
+			</div>
 
-			<input
-				class="product__size-pick"
-				type="radio"
-				id="m"
-				:value="product.price[1]"
-				v-model="picked"
-			/>
-			<label for="m">M</label>
+			<p class="product__description">
+				{{ product.description }}
+			</p>
 
-			<input
-				class="product__size-pick"
-				type="radio"
-				id="l"
-				:value="product.price[2]"
-				v-model="picked"
-			/>
-			<label for="l">L</label>
-		</div>
+			<p class="product__price">${{ picked.cost | toFixed }}</p>
 
-		<Counter
-			class="product__counter"
-			sizeM
-			@increment="counter++"
-			@decrement="counterDecrement()"
-		>
-			{{ counter }}
-		</Counter>
+			<div class="product__sizes">
+				<template v-for="(meta, i) in product.meta">
+					<input
+						class="product__size-pick"
+						type="radio"
+						:id="meta.size"
+						:value="meta"
+						v-model="picked"
+						:key="meta.size"
+					/>
+					<label :for="meta.size" :key="meta.size + i">{{ meta.size }}</label>
+				</template>
+			</div>
 
-		<cart-button class="product__add" @click="addToCart(product)"
-			>Add to cart</cart-button
-		>
-	</div>
+			<Counter
+				class="product__counter"
+				sizeM
+				@increment="counter++"
+				@decrement="counterDecrement()"
+			>
+				{{ counter }}
+			</Counter>
+
+			<cart-button class="product__add" @click="addToCart(product)">
+				Add to cart
+			</cart-button>
+		</template>
+	</section>
 </template>
 
 <script>
@@ -71,13 +74,17 @@ export default {
 	data() {
 		return {
 			counter: 1,
-			picked: this.$store.getters.productBaseCost(this.code),
+			picked: null
 		};
 	},
 
 	computed: {
 		product() {
 			return this.$store.getters.product(this.code);
+		},
+
+		cartLength() {
+			return this.$store.getters.cartLength;
 		},
 	},
 
@@ -88,14 +95,25 @@ export default {
 		},
 
 		addToCart(product) {
-			product = { ...product, price: this.picked, amount: this.counter };
+			product = {
+				...product,
+				size: this.picked.size,
+				cost: this.picked.cost,
+				amount: this.counter,
+			};
+
 			this.$store.dispatch('addProduct', product);
+			this.counter = 1;
 		},
+	},
+
+	created() {
+		this.picked = this.$store.getters.productDefaultSize(this.code);
 	},
 
 	components: {
 		Counter,
-		CartButton,
+		CartButton
 	},
 };
 </script>
@@ -106,8 +124,58 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	flex-grow: 1;
-	padding: 40px 10px;
+	padding: 20px 10px;
 	background-color: #fff;
+
+	&__header {
+		align-self: stretch;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__back {
+		display: flex;
+		padding: 2px;
+		text-decoration: none;
+		color: #000;
+		background-color: #ffd45b;
+		border-radius: 50%;
+
+		&:hover {
+			background-color: #f1c857;
+		}
+
+		& > span {
+			font-size: 1.8rem;
+		}
+	}
+
+	&__to-cart {
+		position: relative;
+		color: #000;
+		font-size: 0.8rem;
+		text-decoration: none;
+
+		&:hover {
+			background-color: #f1c857;
+		}
+	}
+
+	&__cart-length {
+		position: absolute;
+		bottom: -10px;
+		left: -10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		border: 3px solid #fff;
+		color: #fff;
+		min-width: 27px;
+		min-height: 27px;
+		background-color: rgb(243, 63, 63);
+	}
 
 	&__title {
 		text-align: center;
@@ -151,11 +219,14 @@ export default {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			width: 40px;
-			height: 40px;
+			box-sizing: border-box;
+			min-width: 40px;
+			min-height: 40px;
+			padding: 0 5px;
 			background-color: #f6f6f6;
 			color: #8f8d8e;
 			font-weight: 700;
+			text-transform: uppercase;
 			border-radius: 10px;
 			cursor: pointer;
 
@@ -176,11 +247,15 @@ export default {
 	}
 
 	&__counter {
-		margin-bottom: 80px;
+		margin-bottom: 20px;
 	}
 
 	&__add {
-		visibility: visible;
+		margin-top: auto;
+
+		&:hover {
+			transform: translateY(-3px);
+		}
 	}
 }
 </style>

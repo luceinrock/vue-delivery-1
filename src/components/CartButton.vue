@@ -24,11 +24,11 @@ export default {
 	padding: 5px 10px 5px 5px;
 	border-radius: 10px;
 	box-shadow: 0 10px 20px -3px rgb(102, 102, 102);
-	visibility: hidden;
 	cursor: pointer;
+	transition: background-color 0.2s, transform 0.2s;
 
-	&.active {
-		visibility: visible;
+	&:active {
+		background-color: rgb(73, 73, 73);
 	}
 
 	&__bag {

@@ -5,7 +5,20 @@
 			"description": "Ham, mozzarella, alfredo sauce",
 			"image": "img/pizza/ham-and-cheese.jpg",
 			"category": "pizza",
-			"price": [3.99, 5.99, 7.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "3.99"
+				},
+				{
+					"size": "m",
+					"cost": "5.99"
+				},
+				{
+					"size": "l",
+					"cost": "7.99"
+				}
+			],
 			"code": 100001
 		},
 		{
@@ -13,7 +26,20 @@
 			"description": "Chicken, mozzarella, marinara sauce, sweet and sour sauce",
 			"image": "img/pizza/sweet-and-sour-chicken.jpg",
 			"category": "pizza",
-			"price": [3.99, 5.99, 7.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "3.99"
+				},
+				{
+					"size": "m",
+					"cost": "5.99"
+				},
+				{
+					"size": "l",
+					"cost": "7.99"
+				}
+			],
 			"code": 100002
 		},
 		{
@@ -21,7 +47,20 @@
 			"description": "Pesto sauce, alfredo sauce, chicken, cheese cubes, cherry tomatoes, mozzarella",
 			"image": "img/pizza/pesto.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100003
 		},
 		{
@@ -29,7 +68,20 @@
 			"description": "Extra mozzarella, ham, pepperoni, tomatoes, feta cheese, mushrooms, marinara sauce, italian herbs",
 			"image": "img/pizza/four-seasons.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100004
 		},
 		{
@@ -37,7 +89,20 @@
 			"description": "Pepperoni, marinara sauce, extra mozzarella",
 			"image": "img/pizza/pepperoni.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100005
 		},
 		{
@@ -45,7 +110,20 @@
 			"description": "Mozzarella, marinara sauce",
 			"image": "img/pizza/chesse.jpg",
 			"category": "pizza",
-			"price": [3.99, 5.99, 7.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "3.99"
+				},
+				{
+					"size": "m",
+					"cost": "5.99"
+				},
+				{
+					"size": "l",
+					"cost": "7.99"
+				}
+			],
 			"code": 100006
 		},
 		{
@@ -53,7 +131,20 @@
 			"description": "Apples, black currant, ice cream sauce, almond petals, cinnamon",
 			"image": "img/pizza/baked-apple.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100007
 		},
 		{
@@ -61,7 +152,20 @@
 			"description": "Ham, extra mozzarella, marinara sauce, pineapple",
 			"image": "img/pizza/hawaiian.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100008
 		},
 		{
@@ -69,7 +173,20 @@
 			"description": "Pineapples, lingonberries, condensed milk",
 			"image": "img/pizza/pizza-pie.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100009
 		},
 		{
@@ -77,7 +194,20 @@
 			"description": "Extra mozzarella, cheddar and parmesan cheese, blue cheese, creamy sauce",
 			"image": "img/pizza/four-cheeses.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100010
 		},
 		{
@@ -85,7 +215,20 @@
 			"description": "Ham, mozzarella, mushrooms, marinara sauce",
 			"image": "img/pizza/ham-and-mushrooms.jpg",
 			"category": "pizza",
-			"price": [4.49, 6.49, 8.49],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.49"
+				},
+				{
+					"size": "m",
+					"cost": "6.49"
+				},
+				{
+					"size": "l",
+					"cost": "8.49"
+				}
+			],
 			"code": 100011
 		},
 		{
@@ -93,7 +236,20 @@
 			"description": "Chicken, ham, spicy pepperoni, marinara sauce, spicy chorizo, mozzarella",
 			"image": "img/pizza/meat.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100012
 		},
 		{
@@ -101,7 +257,20 @@
 			"description": "Spicy chicken, marinara sauce, bell peppers, red onion, mozzarella, hot jalapeno peppers, tomatoes, salsa sauce",
 			"image": "img/pizza/mexican.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100013
 		},
 		{
@@ -109,7 +278,20 @@
 			"description": "Mozzarella, mushrooms, red onion, feta cheese, tomatoes, marinara sauce, italian herbs, bell pepper, olives",
 			"image": "img/pizza/vegetables-and-mushrooms.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100014
 		},
 		{
@@ -117,7 +299,20 @@
 			"description": "Pepperoni, green pepper, mozzarella, marinara sauce",
 			"image": "img/pizza/pepperoni-fresh.jpg",
 			"category": "pizza",
-			"price": [3.99, 5.99, 7.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100015
 		},
 		{
@@ -125,7 +320,20 @@
 			"description": "Extra mozzarella, tomatoes, marinara sauce, italian herbs",
 			"image": "img/pizza/margarita.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100016
 		},
 		{
@@ -133,7 +341,20 @@
 			"description": "Double pepperoni, marinara sauce, extra mozzarella",
 			"image": "img/pizza/double-pepperoni.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100017
 		},
 		{
@@ -141,7 +362,20 @@
 			"description": "Chicken, beef meatballs, spicy pepperoni, marinara sauce, spicy chorizo, mozzarella, bacon",
 			"image": "img/pizza/super-meat.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100018
 		},
 		{
@@ -149,7 +383,20 @@
 			"description": "Bacon, cheddar and parmesan cheese, alfredo sauce, cherry tomatoes, garlic, italian herbs, red onion",
 			"image": "img/pizza/carbonara.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100019
 		},
 		{
@@ -157,7 +404,20 @@
 			"description": "Chicken, BBQ sauce, marinara sauce, red onion, mozzarella, bacon",
 			"image": "img/pizza/chicken-bbq.jpg",
 			"category": "pizza",
-			"price": [4.99, 6.99, 8.99],
+			"meta": [
+				{
+					"size": "s",
+					"cost": "4.99"
+				},
+				{
+					"size": "m",
+					"cost": "6.99"
+				},
+				{
+					"size": "l",
+					"cost": "8.99"
+				}
+			],
 			"code": 100020
 		}
 	],
@@ -167,7 +427,7 @@
 			"description": "Tomato, quail egg, mustard seeds, arugula, feta cheese, beef cutlet, blue sweet onion",
 			"image": "img/burger/enzo-ferrari.jpg",
 			"category": "burger",
-			"price": [6.99],
+			"meta": [{ "cost": "6.99", "size": "s" }],
 			"code": 200001
 		},
 		{
@@ -175,7 +435,7 @@
 			"description": "White sauce, cheddar cheese, barbecue sauce, cucumber, potato chips, two beef patties, blue onion",
 			"image": "img/burger/pablo-escobar.jpg",
 			"category": "burger",
-			"price": [7.99],
+			"meta": [{ "cost": "7.99", "size": "s" }],
 			"code": 200002
 		},
 		{
@@ -183,7 +443,7 @@
 			"description": "Bacon, pickled cucumber, cheddar cheese, red sauce, american mustard, blue onion, two veal cutlets",
 			"image": "img/burger/bacanator2.jpg",
 			"category": "burger",
-			"price": [8.99],
+			"meta": [{ "cost": "8.99", "size": "s" }],
 			"code": 200003
 		},
 		{
@@ -191,7 +451,7 @@
 			"description": "Bell peppers, lettuce, pork cutlet, blue onion, bbq sauce",
 			"image": "img/burger/chuck-norris.jpg",
 			"category": "burger",
-			"price": [6.49],
+			"meta": [{ "cost": "6.49", "size": "s" }],
 			"code": 200004
 		},
 		{
@@ -199,7 +459,7 @@
 			"description": "Basil, tomato, chicken breast, pomegranate sauce, fried bacon",
 			"image": "img/burger/chill-out.jpg",
 			"category": "burger",
-			"price": [6.99],
+			"meta": [{ "cost": "6.99", "size": "s" }],
 			"code": 200005
 		},
 		{
@@ -207,7 +467,7 @@
 			"description": "Tomato, pickled cucumber, hot pepper, beef cutlet, fried onion, mustard-pepper sauce",
 			"image": "img/burger/pepperito.jpg",
 			"category": "burger",
-			"price": [7.99],
+			"meta": [{ "cost": "7.99", "size": "s" }],
 			"code": 200006
 		},
 		{
@@ -215,7 +475,7 @@
 			"description": "Pickled cucumber, cheddar cheese, mustard dressing, beef cutlet, blue onion, crispy bacon",
 			"image": "img/burger/baconator.jpg",
 			"category": "burger",
-			"price": [7.99],
+			"meta": [{ "cost": "7.99", "size": "s" }],
 			"code": 200007
 		},
 		{
@@ -223,7 +483,7 @@
 			"description": "Pickled cucumber, cheddar cheese, signature sauce, beef cutlet, fried onion, crispy bacon",
 			"image": "img/burger/el-clasico.jpg",
 			"category": "burger",
-			"price": [7.99],
+			"meta": [{ "cost": "7.99", "size": "s" }],
 			"code": 200008
 		},
 		{
@@ -231,7 +491,7 @@
 			"description": "Pickled cucumber, oyster sauce, cole slow salad, pork cutlet, blue onion, cuttlefish ink roll",
 			"image": "img/burger/jazz-night.jpg",
 			"category": "burger",
-			"price": [7.49],
+			"meta": [{ "cost": "7.49", "size": "s" }],
 			"code": 200009
 		},
 		{
@@ -239,7 +499,7 @@
 			"description": "Tomato, cheddar cheese, mustard seeds, lettuce, beef cutlet, fried eggs, crispy bacon",
 			"image": "img/burger/shaggy.jpg",
 			"category": "burger",
-			"price": [7.99],
+			"meta": [{ "cost": "7.99", "size": "s" }],
 			"code": 200010
 		},
 		{
@@ -247,7 +507,7 @@
 			"description": "Tomato, cheddar cheese, feta cheese, lettuce, sour cream sauce, fried onion, steak, caramelized bun",
 			"image": "img/burger/rocky.jpg",
 			"category": "burger",
-			"price": [7.99],
+			"meta": [{ "cost": "7.99", "size": "s" }],
 			"code": 200011
 		},
 		{
@@ -255,81 +515,109 @@
 			"description": "Cheddar cheese, fried mushrooms, lettuce, sour cream sauce, beef cutlet, fried onion",
 			"image": "img/burger/chicago.jpg",
 			"category": "burger",
-			"price": [7.49],
+			"meta": [{ "cost": "7.49", "size": "s" }],
 			"code": 200012
 		}
 	],
 	"drinks": [
 		{
 			"title": "Coca Cola",
-			"description": "",
+			"description": "Carbonated soft drink",
 			"image": "img/drinks/coca-cola.jpg",
 			"category": "drinks",
-			"price": [1.49],
+			"meta": [
+				{ "size": "0.5l", "cost": "1.49" },
+				{ "size": "1.0l", "cost": "2.49" },
+				{ "size": "2.0l", "cost": "4.49" }
+			],
 			"code": 300001
 		},
 		{
 			"title": "Sprite",
-			"description": "",
+			"description": "Carbonated soft drink, lime and lemon flavor",
 			"image": "img/drinks/sprite.jpg",
 			"category": "drinks",
-			"price": [1.49],
+			"meta": [
+				{ "size": "0.5l", "cost": "1.49" },
+				{ "size": "1.0l", "cost": "2.49" },
+				{ "size": "2.0l", "cost": "4.49" }
+			],
 			"code": 300002
 		},
 		{
 			"title": "Fanta",
-			"description": "",
+			"description": "Highly carbonated soft drink with citrus flavor",
 			"image": "img/drinks/fanta.jpg",
 			"category": "drinks",
-			"price": [1.49],
+			"meta": [
+				{ "size": "0.5l", "cost": "1.49" },
+				{ "size": "1.0l", "cost": "2.49" },
+				{ "size": "2.0l", "cost": "4.49" }
+			],
 			"code": 300003
 		},
 		{
 			"title": "Americano",
-			"description": "",
+			"description": "Espresso diluted with hot water",
 			"image": "img/drinks/americano.jpg",
 			"category": "drinks",
-			"price": [1.29],
+			"meta": [
+				{ "size": "0.3l", "cost": "1.29" }
+			],
 			"code": 300004
 		},
 		{
 			"title": "Cappuccino",
-			"description": "",
+			"description": "Italian espresso coffee drink with the addition of warmed frothed milk",
 			"image": "img/drinks/cappuccino.jpg",
 			"category": "drinks",
-			"price": [1.69],
+			"meta": [
+				{ "size": "0.3l", "cost": "1.69" }
+			],
 			"code": 300005
 		},
 		{
 			"title": "Latte",
-			"description": "",
+			"description": "A coffee drink originally from Italy, consisting of milk and espresso",
 			"image": "img/drinks/latte.jpg",
 			"category": "drinks",
-			"price": [1.69],
+			"meta": [
+				{ "size": "0.3l", "cost": "1.69" }
+			],
 			"code": 300006
 		},
 		{
 			"title": "Sea Buckthorn Punch",
-			"description": "",
+			"description": "Orange, sea buckthorn berry juice, anise, cardamom, cinnamon, maple syrup",
 			"image": "img/drinks/sea-buckthorn-punch.jpg",
 			"category": "drinks",
-			"price": [1.59],
+			"meta": [
+				{ "size": "0.3l", "cost": "1.59" }
+			],
 			"code": 300007
 		},
 		{
 			"title": "Schweppes",
-			"description": "",
+			"description": "Lemon juice drink",
 			"image": "img/drinks/schweppes.jpg",
 			"category": "drinks",
-			"price": [1.59],
+			"meta": [
+				{ "size": "0.5l", "cost": "1.49" },
+				{ "size": "1.0l", "cost": "2.49" },
+				{ "size": "2.0l", "cost": "4.49" }
+			],
 			"code": 300008
 		},
 		{
 			"title": "Still Water",
-			"description": "",
+			"description": "Water from mountain streams",
 			"image": "img/drinks/still-water.jpg",
 			"category": "drinks",
-			"price": [0.59],
+			"meta": [
+				{ "size": "0.5l", "cost": "0.59" },
+				{ "size": "1.0l", "cost": "0.99" },
+				{ "size": "2.0l", "cost": "1.59" }
+			],
 			"code": 300009
 		}
 	],
@@ -339,7 +627,9 @@
 			"description": "Classic american curd dessert",
 			"image": "img/desserts/cheesecake-new-york.jpg",
 			"category": "desserts",
-			"price": [1.99],
+			"meta": [
+				{ "size": "200g", "cost": "1.99" }
+			],
 			"code": 400001
 		},
 		{
@@ -347,7 +637,9 @@
 			"description": "Two desserts with a crispy crust and melted chocolate filling",
 			"image": "img/desserts/fondants.jpg",
 			"category": "desserts",
-			"price": [4.99],
+			"meta": [
+				{ "size": "150g", "cost": "4.99" }
+			],
 			"code": 400002
 		},
 		{
@@ -355,7 +647,9 @@
 			"description": "Delicate donut with strawberry filling and multi-colored sprinkles",
 			"image": "img/desserts/strawberry-donut.jpg",
 			"category": "desserts",
-			"price": [1.29],
+			"meta": [
+				{ "size": "100g", "cost": "1.29" }
+			],
 			"code": 400003
 		},
 		{
@@ -363,7 +657,9 @@
 			"description": "Delicate donut with chocolate filling, icing and sprinkling",
 			"image": "img/desserts/triple-chocolate-donut.jpg",
 			"category": "desserts",
-			"price": [1.29],
+			"meta": [
+				{ "size": "100g", "cost": "1.29" }
+			],
 			"code": 400004
 		},
 		{
@@ -371,7 +667,9 @@
 			"description": "Dessert made from natural cocoa, delicate filling based on chocolate and cubes of white and milk chocolate",
 			"image": "img/desserts/muffin-three-chocolates.jpg",
 			"category": "desserts",
-			"price": [1.09],
+			"meta": [
+				{ "size": "100g", "cost": "1.09" }
+			],
 			"code": 400005
 		},
 		{
@@ -379,7 +677,9 @@
 			"description": "Delicate cookie with pieces of chocolate",
 			"image": "img/desserts/chocolate-chip-cookies.jpg",
 			"category": "desserts",
-			"price": [0.99],
+			"meta": [
+				{ "size": "70g", "cost": "0.99" }
+			],
 			"code": 400006
 		},
 		{
@@ -387,7 +687,9 @@
 			"description": "Dessert made from shortcrust pastry with apple filling. May contain raisins",
 			"image": "img/desserts/apple-pie.jpg",
 			"category": "desserts",
-			"price": [1.99],
+			"meta": [
+				{ "size": "200g", "cost": "1.99" }
+			],
 			"code": 400007
 		},
 		{
@@ -395,7 +697,9 @@
 			"description": "Milk and ice cream drink",
 			"image": "img/desserts/milkshake.jpg",
 			"category": "desserts",
-			"price": [2.49],
+			"meta": [
+				{ "size": "0.3l", "cost": "2.49" }
+			],
 			"code": 400008
 		},
 		{
@@ -403,7 +707,9 @@
 			"description": "Milk and ice cream drink with strawberry syrup",
 			"image": "img/desserts/strawberry-milkshake.jpg",
 			"category": "desserts",
-			"price": [2.49],
+			"meta": [
+				{ "size": "0.3l", "cost": "2.49" }
+			],
 			"code": 400009
 		},
 		{
@@ -411,7 +717,9 @@
 			"description": "Milk and ice cream drink with chocolate syrup",
 			"image": "img/desserts/chocolate-milkshake.jpg",
 			"category": "desserts",
-			"price": [2.49],
+			"meta": [
+				{ "size": "0.3l", "cost": "2.49" }
+			],
 			"code": 400010
 		}
 	]
