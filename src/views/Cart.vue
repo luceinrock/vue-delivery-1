@@ -43,14 +43,20 @@
 			</li>
 		</ul>
 
-		<form class="cart__total" v-if="!isCartEmpty">
+		<div class="cart__total" v-if="!isCartEmpty">
 			<div class="cart__total-row">
 				<span class="cart__total-text">Total</span>
 				<span class="cart__total-price">$ {{ totalPrice | toFixed }}</span>
 			</div>
 
-			<button type="submit" class="cart__total-submit">Pay</button>
-		</form>
+			<button
+				type="button"
+				class="cart__total-submit btn-confirm"
+				@click="$modal.show('order')"
+			>
+				To order
+			</button>
+		</div>
 
 		<div class="cart__empty" v-if="isCartEmpty">
 			<img
@@ -59,15 +65,126 @@
 				class="cart__empty-img"
 			/>
 		</div>
+
+		<modal name="order" class="cart__modal" adaptive>
+			<span class="cart__modal-title">Enter your details</span>
+
+			<form class="cart__order" @submit.prevent="onSubmit">
+				<span
+					class="cart__order-helper"
+					:class="{
+						error: $v.email.$dirty && $v.email.$error,
+					}"
+				>
+					{{
+						!$v.email.required
+							? 'This is a required field'
+							: 'Enter a valid Email'
+					}}
+				</span>
+				<input
+					type="email"
+					placeholder="Email"
+					class="cart__order-input"
+					v-model.trim="email"
+				/>
+
+				<span
+					class="cart__order-helper"
+					:class="{ error: $v.name.$dirty && $v.name.$error }"
+				>
+					This is a required field
+				</span>
+				<input
+					type="text"
+					placeholder="Name"
+					class="cart__order-input"
+					:class="{ invalid: $v.name.$error }"
+					v-model.trim="name"
+				/>
+
+				<span
+					class="cart__order-helper"
+					:class="{
+						error: $v.address.$dirty && $v.address.$error,
+					}"
+				>
+					This is a required field
+				</span>
+				<input
+					type="text"
+					placeholder="Address"
+					class="cart__order-input"
+					v-model.trim="address"
+					:class="{ invalid: $v.address.$error }"
+				/>
+
+				<span
+					class="cart__order-helper"
+					:class="{
+						error: $v.phone.$dirty && $v.phone.$error,
+					}"
+				>
+					{{
+						!$v.phone.required
+							? 'This is a required field'
+							: 'Enter a valid number (+380 000 000 000)'
+					}}
+				</span>
+				<input
+					type="text"
+					placeholder="Phone"
+					class="cart__order-input"
+					v-model.trim="phone"
+					:class="{ invalid: $v.phone.$error }"
+				/>
+
+				<button type="submit" class="btn-confirm cart__order-pay">
+					Pay now
+				</button>
+
+				<button type="submit" class="btn-confirm cart__order-cash">
+					Pay in cash
+				</button>
+			</form>
+
+			<div class="cart__modal-img-wrapper">
+				<img
+					:src="require('@/assets/logo.png')"
+					alt="vue delivery logo"
+					class="cart__modal-logo"
+				/>
+			</div>
+		</modal>
+
+		<notifications position="center">
+			<template slot="body">
+				<p class="notification">
+					Thanks for your order
+					<span class="notification__name">{{ name }}</span>
+				</p>
+			</template>
+		</notifications>
 	</div>
 </template>
 
 <script>
 import Counter from '../components/Counter';
+import { required, email } from 'vuelidate/lib/validators';
+const phoneUA = (value) => value.match(/^((\+?3)?8)?0\d{9}$/) != null;
 
 export default {
 	name: 'Cart',
 	components: { Counter },
+	data() {
+		return {
+			email: '',
+			name: '',
+			address: '',
+			phone: '',
+		};
+	},
+
 	computed: {
 		cartList() {
 			return this.$store.getters.getCartList;
@@ -93,6 +210,40 @@ export default {
 
 		deleteItemInCart(index) {
 			this.$store.commit('deleteFromCart', index);
+		},
+
+		onSubmit() {
+			this.$v.$touch();
+
+			if (!this.$v.$invalid) {
+				this.$modal.hide('order');
+				this.$store.dispatch('removeCart')
+				this.$notify('');
+			}
+		},
+	},
+
+	mounted() {
+		this.$modal.hide('order');
+	},
+
+	validations: {
+		email: {
+			required,
+			email,
+		},
+
+		name: {
+			required,
+		},
+
+		address: {
+			required,
+		},
+
+		phone: {
+			required,
+			phone: phoneUA,
 		},
 	},
 };
@@ -202,20 +353,6 @@ export default {
 			font-size: 1.5rem;
 			font-weight: 700;
 		}
-
-		&-submit {
-			display: block;
-			width: 100%;
-			background-color: #040a22;
-			color: #fff;
-			border: none;
-			padding: 10px 0;
-			cursor: pointer;
-
-			&:hover {
-				background-color: #040a22de;
-			}
-		}
 	}
 
 	&__empty {
@@ -224,6 +361,115 @@ export default {
 		&-img {
 			max-width: 100%;
 		}
+	}
+
+	&__modal {
+		display: flex;
+
+		&-title {
+			display: block;
+			text-align: center;
+			margin-bottom: 20px;
+			font-weight: 700;
+			font-size: 1.3rem;
+		}
+
+		& .vm--modal {
+			position: absolute;
+			bottom: 0;
+			top: auto !important;
+			height: auto !important;
+			border-radius: 0;
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+			overflow: visible;
+			padding: 50px 15px 15px;
+		}
+
+		&-img-wrapper {
+			position: absolute;
+			top: -25px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 50px;
+			height: 50px;
+			padding: 3px;
+			border: 5px solid #fff;
+			background-color: rgb(223, 246, 238);
+			border-radius: 50%;
+		}
+
+		&-logo {
+			max-width: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__order {
+		display: flex;
+		flex-direction: column;
+
+		&-input {
+			padding: 10px;
+			background-color: rgba(34, 34, 34, 0.05);
+			border: 1px solid rgba(34, 34, 34, 0.05);
+			border-radius: 5px;
+			margin-bottom: 15px;
+
+			&:last-of-type {
+				margin-bottom: 30px;
+			}
+
+			&::placeholder {
+				font-weight: 400;
+			}
+
+			&:focus {
+				background-color: #fff;
+				outline: none;
+			}
+
+			&.invalid {
+				border-color: rgb(233, 51, 51);
+			}
+		}
+
+		&-helper {
+			opacity: 0;
+			font-size: 0.8rem;
+			color: rgb(233, 51, 51);
+			margin-bottom: 3px;
+			transition: opacity 0.2s;
+
+			&.error {
+				opacity: 1;
+			}
+		}
+
+		&-pay {
+			margin-bottom: 15px;
+		}
+
+		&-cash {
+			background-color: #07440a;
+
+			&:hover {
+				background-color: #07440ad0;
+			}
+		}
+	}
+}
+
+.notification {
+	padding: 10px;
+	margin: 0 5px 5px;
+	background: #68cd86;
+	border-left: 5px solid #42a85f;
+	min-height: 50px;
+	color: #ffffff;
+
+	&__name {
+		font-weight: 700;
 	}
 }
 </style>

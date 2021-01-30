@@ -19,6 +19,10 @@ export default {
 		deleteFromCart(state, index) {
 			state.cart.splice(index, 1);
 		},
+
+		removeCart(state) {
+			state.cart = [];
+		},
 	},
 
 	actions: {
@@ -44,6 +48,10 @@ export default {
 			} else {
 				commit('subtractFromQuantity', index);
 			}
+		},
+
+		removeCart({ commit }) {
+			commit('removeCart');
 		},
 	},
 

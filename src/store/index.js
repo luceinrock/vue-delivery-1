@@ -11,7 +11,7 @@ export default new Vuex.Store({
 		products: null,
 	},
 	mutations: {
-		initProducts(state, products) {
+		setProducts(state, products) {
 			state.products = products;
 		},
 	},
@@ -20,7 +20,7 @@ export default new Vuex.Store({
 		async GET_PRODUCTS({ commit }) {
 			try {
 				const response = await axios.get('http://localhost:8080/db/db.json');
-				commit('initProducts', response.data);
+				commit('setProducts', response.data);
 			} catch (error) {
 				console.log(error);
 			}

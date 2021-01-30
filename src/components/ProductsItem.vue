@@ -6,8 +6,8 @@
 			class="products__item-wrapper"
 		>
 			<img
-				:src="item.image"
-				:alt="item.title"
+				v-lazy="item.image"
+				:alt="`${item.title} ${item.category}`"
 				class="products__item-img"
 				width="233"
 				height="233"

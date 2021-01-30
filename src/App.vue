@@ -100,6 +100,20 @@ body {
 	}
 }
 
+.btn-confirm {
+			display: block;
+			width: 100%;
+			background-color: #040a22;
+			color: #fff;
+			border: none;
+			padding: 10px 0;
+			cursor: pointer;
+
+			&:hover {
+				background-color: #040a22de;
+			}
+		}
+
 .title {
 	position: relative;
 	margin: 0;
