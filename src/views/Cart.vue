@@ -374,6 +374,12 @@ export default {
 			font-size: 1.3rem;
 		}
 
+		& .vm--overlay {
+			height: auto;
+			right: 0;
+			bottom: 0;
+		}
+
 		& .vm--modal {
 			position: absolute;
 			bottom: 0;
