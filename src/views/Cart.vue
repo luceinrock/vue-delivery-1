@@ -86,6 +86,7 @@
 					type="email"
 					placeholder="Email"
 					class="cart__order-input"
+					:class="{ invalid: $v.email.$error }"
 					v-model.trim="email"
 				/>
 
@@ -209,7 +210,7 @@ export default {
 		},
 
 		deleteItemInCart(index) {
-			this.$store.commit('deleteFromCart', index);
+			this.$store.dispatch('deleteFromCart', index);
 		},
 
 		onSubmit() {
@@ -217,7 +218,7 @@ export default {
 
 			if (!this.$v.$invalid) {
 				this.$modal.hide('order');
-				this.$store.dispatch('removeCart')
+				this.$store.dispatch('removeCart');
 				this.$notify('');
 			}
 		},
@@ -365,6 +366,9 @@ export default {
 
 	&__modal {
 		display: flex;
+		height: auto;
+		right: 0;
+		bottom: 0;
 
 		&-title {
 			display: block;
@@ -374,15 +378,7 @@ export default {
 			font-size: 1.3rem;
 		}
 
-		& .vm--overlay {
-			height: auto;
-			right: 0;
-			bottom: 0;
-		}
-
 		& .vm--modal {
-			position: absolute;
-			bottom: 0;
 			top: auto !important;
 			height: auto !important;
 			border-radius: 0;
@@ -390,6 +386,7 @@ export default {
 			border-top-right-radius: 20px;
 			overflow: visible;
 			padding: 50px 15px 15px;
+			margin-top: auto;
 		}
 
 		&-img-wrapper {
@@ -467,6 +464,8 @@ export default {
 }
 
 .notification {
+	display: flex;
+	align-items: center;
 	padding: 10px;
 	margin: 0 5px 5px;
 	background: #68cd86;
@@ -475,6 +474,8 @@ export default {
 	color: #ffffff;
 
 	&__name {
+		display: inline-block;
+		margin-left: 5px;
 		font-weight: 700;
 	}
 }

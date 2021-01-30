@@ -1,9 +1,15 @@
+import { storage } from './utils';
+
 export default {
 	state: () => ({
-		cart: [],
+		cart: null,
 	}),
 
 	mutations: {
+		setCart(state, payload) {
+			state.cart = payload;
+		},
+
 		addProduct(state, product) {
 			state.cart.push(product);
 		},
@@ -26,6 +32,11 @@ export default {
 	},
 
 	actions: {
+		setCart({ commit }) {
+			const cart = storage.fetch('cart') || [];
+			commit('setCart', cart);
+		},
+
 		addProduct({ state, commit }, product) {
 			const indexInCart = state.cart.findIndex(
 				(item) => item.size === product.size && item.title === product.title
@@ -36,10 +47,18 @@ export default {
 			} else {
 				commit('addProduct', product);
 			}
+
+			storage.save(state.cart, 'cart');
 		},
 
-		addToQuantity({ commit }, index) {
+		deleteFromCart({ state, commit }, index) {
+			commit('deleteFromCart', index);
+			storage.save(state.cart, 'cart');
+		},
+
+		addToQuantity({ state, commit }, index) {
 			commit('addToQuantity', index);
+			storage.save(state.cart, 'cart');
 		},
 
 		subtractFromQuantity({ state, commit }, index) {
@@ -48,10 +67,14 @@ export default {
 			} else {
 				commit('subtractFromQuantity', index);
 			}
+
+			storage.save(state.cart, 'cart');
 		},
 
-		removeCart({ commit }) {
+		removeCart({ state, commit }) {
 			commit('removeCart');
+
+			storage.save(state.cart, 'cart');
 		},
 	},
 

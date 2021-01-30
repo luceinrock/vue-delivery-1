@@ -126,7 +126,22 @@ export default {
 			height: 100%;
 			top: 0;
 			left: 0;
-			background-image: linear-gradient(to top, #fff, transparent 10px);
+			background: -moz-linear-gradient(
+				top,
+				rgba(255, 255, 255, 1) 0%,
+				rgba(255, 255, 255, 0) 100%
+			);
+			background: -webkit-linear-gradient(
+				top,
+				rgba(255, 255, 255, 1) 0%,
+				rgba(255, 255, 255, 0) 100%
+			);
+			background: linear-gradient(
+				to top,
+				rgba(255, 255, 255, 1) 0%,
+				rgba(255, 255, 255, 0) 100%
+			);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
 		}
 	}
 

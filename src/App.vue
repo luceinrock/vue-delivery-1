@@ -19,6 +19,7 @@ export default {
 	},
 
 	created() {
+		this.$store.dispatch('setCart');
 		this.$store.dispatch('GET_PRODUCTS');
 	},
 
@@ -101,18 +102,18 @@ body {
 }
 
 .btn-confirm {
-			display: block;
-			width: 100%;
-			background-color: #040a22;
-			color: #fff;
-			border: none;
-			padding: 10px 0;
-			cursor: pointer;
+	display: block;
+	width: 100%;
+	background-color: #040a22;
+	color: #fff;
+	border: none;
+	padding: 10px 0;
+	cursor: pointer;
 
-			&:hover {
-				background-color: #040a22de;
-			}
-		}
+	&:hover {
+		background-color: #040a22de;
+	}
+}
 
 .title {
 	position: relative;
