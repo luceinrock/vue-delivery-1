@@ -13,6 +13,7 @@ export default new Vuex.Store({
 	mutations: {
 		setProducts(state, products) {
 			state.products = products;
+			state.loading = false;
 		},
 	},
 
@@ -29,34 +30,17 @@ export default new Vuex.Store({
 
 	getters: {
 		product: (state) => (code) => {
-			const products = state.products;
-			let product = null;
+			{
+				let product = null;
 
-			for (let key in products) {
-				product = products[key].find((item) => item.code === +code);
+				Object.values(state.products).some((val) => {
+					product = val.find((item) => item.code === +code);
+					return product;
+				});
 
-				if (product) {
-					break;
-				}
+				return product;
 			}
-
-			return product;
-		},
-
-		productDefaultSize: (state) => (code) => {
-			const products = state.products;
-			let product = null;
-
-			for (let key in products) {
-				product = products[key].find((item) => item.code === +code);
-
-				if (product) {
-					break;
-				}
-			}
-
-			return product.meta[0];
-		},
+		}
 	},
 
 	modules: { cart },

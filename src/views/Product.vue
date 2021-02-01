@@ -15,7 +15,7 @@
 						shopping_bag
 					</span>
 
-					<span class="product__cart-length" v-show="cartLength">{{
+					<span class="product__cart-length" v-if="cartLength">{{
 						cartLength
 					}}</span>
 				</router-link>
@@ -78,7 +78,7 @@ export default {
 	data() {
 		return {
 			counter: 1,
-			picked: null,
+			picked: this.$store.getters.product(this.code).meta[0],
 		};
 	},
 
@@ -89,7 +89,7 @@ export default {
 
 		cartLength() {
 			return this.$store.getters.cartLength;
-		},
+		}
 	},
 
 	methods: {
@@ -109,10 +109,6 @@ export default {
 			this.$store.dispatch('addProduct', product);
 			this.counter = 1;
 		},
-	},
-
-	created() {
-		this.picked = this.$store.getters.productDefaultSize(this.code);
 	},
 
 	components: {
@@ -235,6 +231,10 @@ export default {
 
 	&__counter {
 		margin-bottom: 20px;
+
+		@media (min-width: 992px) {
+			margin-bottom: 50px;
+		}
 	}
 
 	&__add {
@@ -242,6 +242,10 @@ export default {
 
 		&:hover {
 			transform: translateY(-3px);
+		}
+
+		@media (min-width: 992px) {
+			margin-top: 0;
 		}
 	}
 }

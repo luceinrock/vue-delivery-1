@@ -4,7 +4,7 @@
 			class="categories"
 			active-class="active"
 			tag="ul"
-			:offset="70"
+			:offset="31"
 			:modifyUrl="false"
 		>
 			<li
@@ -62,7 +62,6 @@ export default {
 <style lang="scss">
 .horizontal-scroll {
 	position: sticky;
-	top: 0;
 	top: 5px;
 	overflow: auto;
 	margin: 0 10px 30px 10px;

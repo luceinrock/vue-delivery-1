@@ -24,6 +24,8 @@ const routes = [
 		component: () => import('../views/Product'),
 		meta: { scrollToTop: true },
 	},
+
+	{ path: '*', redirect: '/' }
 ];
 
 const router = new VueRouter({

@@ -71,6 +71,14 @@ export default {
 	box-sizing: border-box;
 	display: flex;
 
+	@media(min-width: 768px) {
+		flex-basis: 33.33%;
+	}
+
+	@media(min-width: 992px) {
+		flex-basis: 25%;
+	}
+
 	&-wrapper {
 		padding-top: 10px;
 		border-radius: 20px;

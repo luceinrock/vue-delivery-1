@@ -24,8 +24,11 @@ Vue.use(Notifications);
 
 Vue.config.productionTip = false;
 
-new Vue({
-	router,
-	store,
-	render: (h) => h(App),
-}).$mount('#app');
+store.dispatch('GET_PRODUCTS').then(() => {
+	new Vue({
+		router,
+		store,
+		render: (h) => h(App)
+	}).$mount('#app');
+});
+

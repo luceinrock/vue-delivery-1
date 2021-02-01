@@ -337,6 +337,12 @@ export default {
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
 
+		@media (min-width: 768px) {
+			left: 50%;
+			transform: translateX(-50%);
+			max-width: 1100px;
+		}
+
 		&-row {
 			display: flex;
 			justify-content: space-between;
@@ -358,6 +364,8 @@ export default {
 
 	&__empty {
 		padding: 0 10px;
+		display: flex;
+		justify-content: center;
 
 		&-img {
 			max-width: 100%;

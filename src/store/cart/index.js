@@ -35,6 +35,14 @@ export default {
 		setCart({ commit }) {
 			const cart = storage.fetch('cart') || [];
 			commit('setCart', cart);
+
+			this.watch(
+				(state, getters) => getters.cart,
+				(cart) => {
+					storage.save(cart, 'cart');
+				},
+				{ deep: true }
+			);
 		},
 
 		addProduct({ state, commit }, product) {
@@ -47,18 +55,14 @@ export default {
 			} else {
 				commit('addProduct', product);
 			}
-
-			storage.save(state.cart, 'cart');
 		},
 
-		deleteFromCart({ state, commit }, index) {
+		deleteFromCart({ commit }, index) {
 			commit('deleteFromCart', index);
-			storage.save(state.cart, 'cart');
 		},
 
-		addToQuantity({ state, commit }, index) {
+		addToQuantity({ commit }, index) {
 			commit('addToQuantity', index);
-			storage.save(state.cart, 'cart');
 		},
 
 		subtractFromQuantity({ state, commit }, index) {
@@ -67,18 +71,18 @@ export default {
 			} else {
 				commit('subtractFromQuantity', index);
 			}
-
-			storage.save(state.cart, 'cart');
 		},
 
-		removeCart({ state, commit }) {
+		removeCart({ commit }) {
 			commit('removeCart');
-
-			storage.save(state.cart, 'cart');
 		},
 	},
 
 	getters: {
+		cart(state) {
+			return state.cart;
+		},
+
 		isCartEmpty(state) {
 			return state.cart.length === 0;
 		},

@@ -20,7 +20,6 @@ export default {
 
 	created() {
 		this.$store.dispatch('setCart');
-		this.$store.dispatch('GET_PRODUCTS');
 	},
 
 	watch: {
@@ -36,6 +35,10 @@ export default {
 <style lang="scss">
 @import './styles/normalize.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+[v-cloak] {
+	display: none;
+}
 
 html {
 	font-family: Roboto, sans-serif;
@@ -53,6 +56,8 @@ body {
 #app {
 	display: flex;
 	flex-grow: 1;
+	max-width: 1100px;
+	margin: 0 auto;
 }
 
 .visually-hidden {
@@ -85,12 +90,13 @@ body {
 }
 
 .btn-back {
-	display: flex;
+	display: inline-flex;
 	padding: 2px;
 	text-decoration: none;
 	color: #000;
 	background-color: #ffd45b;
 	border-radius: 50%;
+	flex-shrink: 0;
 
 	&:hover {
 		background-color: #f1c857;
