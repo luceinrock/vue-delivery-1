@@ -12,36 +12,7 @@
 			</a>
 		</header>
 
-		<ul class="cart__list" v-if="!isCartEmpty">
-			<li class="cart__item" v-for="(item, index) in cartList" :key="index">
-				<img :src="item.image" :alt="item.title" class="cart__item-img" />
-
-				<div class="cart__item-info">
-					<span class="cart__item-title">
-						{{ item.title }}
-					</span>
-
-					<span class="cart__item-total-cost">
-						$ {{ (item.cost * item.amount) | toFixed }}
-					</span>
-
-					<span class="cart__item-size">
-						{{ item.size | capitalize }}
-					</span>
-				</div>
-
-				<Counter
-					class="cart__counter"
-					@increment="addOne(index)"
-					@decrement="decreaseOne(index)"
-					>{{ item.amount }}
-				</Counter>
-
-				<button class="cart__item-delete" @click="deleteItemInCart(index)">
-					<span class="material-icons"> clear </span>
-				</button>
-			</li>
-		</ul>
+		<CartList />
 
 		<div class="cart__total" v-if="!isCartEmpty">
 			<div class="cart__total-row">
@@ -66,97 +37,7 @@
 			/>
 		</div>
 
-		<modal name="order" class="cart__modal" adaptive>
-			<span class="cart__modal-title">Enter your details</span>
-
-			<form class="cart__order" @submit.prevent="onSubmit">
-				<span
-					class="cart__order-helper"
-					:class="{
-						error: $v.email.$dirty && $v.email.$error,
-					}"
-				>
-					{{
-						!$v.email.required
-							? 'This is a required field'
-							: 'Enter a valid Email'
-					}}
-				</span>
-				<input
-					type="email"
-					placeholder="Email"
-					class="cart__order-input"
-					:class="{ invalid: $v.email.$error }"
-					v-model.trim="email"
-				/>
-
-				<span
-					class="cart__order-helper"
-					:class="{ error: $v.name.$dirty && $v.name.$error }"
-				>
-					This is a required field
-				</span>
-				<input
-					type="text"
-					placeholder="Name"
-					class="cart__order-input"
-					:class="{ invalid: $v.name.$error }"
-					v-model.trim="name"
-				/>
-
-				<span
-					class="cart__order-helper"
-					:class="{
-						error: $v.address.$dirty && $v.address.$error,
-					}"
-				>
-					This is a required field
-				</span>
-				<input
-					type="text"
-					placeholder="Address"
-					class="cart__order-input"
-					v-model.trim="address"
-					:class="{ invalid: $v.address.$error }"
-				/>
-
-				<span
-					class="cart__order-helper"
-					:class="{
-						error: $v.phone.$dirty && $v.phone.$error,
-					}"
-				>
-					{{
-						!$v.phone.required
-							? 'This is a required field'
-							: 'Enter a valid number (+380 000 000 000)'
-					}}
-				</span>
-				<input
-					type="text"
-					placeholder="Phone"
-					class="cart__order-input"
-					v-model.trim="phone"
-					:class="{ invalid: $v.phone.$error }"
-				/>
-
-				<button type="submit" class="btn-confirm cart__order-pay">
-					Pay now
-				</button>
-
-				<button type="submit" class="btn-confirm cart__order-cash">
-					Pay in cash
-				</button>
-			</form>
-
-			<div class="cart__modal-img-wrapper">
-				<img
-					:src="require('@/assets/logo.png')"
-					alt="vue delivery logo"
-					class="cart__modal-logo"
-				/>
-			</div>
-		</modal>
+		<CartModalOrder @confirmOrder="confirmOrder" />
 
 		<notifications position="center">
 			<template slot="body">
@@ -170,27 +51,20 @@
 </template>
 
 <script>
-import Counter from '../components/Counter';
-import { required, email } from 'vuelidate/lib/validators';
-const phoneUA = (value) => value.match(/^((\+?3)?8)?0\d{9}$/) != null;
+import CartList from '../components/CartList';
+import CartModalOrder from '../components/CartModalOrder';
 
 export default {
 	name: 'Cart',
-	components: { Counter },
+	components: { CartList, CartModalOrder },
+
 	data() {
 		return {
-			email: '',
-			name: '',
-			address: '',
-			phone: '',
+			name: null,
 		};
 	},
 
 	computed: {
-		cartList() {
-			return this.$store.getters.getCartList;
-		},
-
 		totalPrice() {
 			return this.$store.getters.TotalPrice;
 		},
@@ -201,51 +75,13 @@ export default {
 	},
 
 	methods: {
-		addOne(index) {
-			this.$store.dispatch('addToQuantity', { index, amount: 1 });
-		},
-
-		decreaseOne(index) {
-			this.$store.dispatch('subtractFromQuantity', index);
-		},
-
-		deleteItemInCart(index) {
-			this.$store.dispatch('deleteFromCart', index);
-		},
-
-		onSubmit() {
-			this.$v.$touch();
-
-			if (!this.$v.$invalid) {
-				this.$modal.hide('order');
-				this.$store.dispatch('removeCart');
-				this.$notify('');
-			}
+		confirmOrder(name) {
+			this.name = name;
 		},
 	},
 
 	mounted() {
 		this.$modal.hide('order');
-	},
-
-	validations: {
-		email: {
-			required,
-			email,
-		},
-
-		name: {
-			required,
-		},
-
-		address: {
-			required,
-		},
-
-		phone: {
-			required,
-			phone: phoneUA,
-		},
 	},
 };
 </script>
@@ -267,64 +103,6 @@ export default {
 	&__title {
 		margin: 0;
 		font-size: 1.7rem;
-	}
-
-	&__list {
-		margin: 0;
-		padding: 0 10px;
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-	}
-
-	&__item {
-		display: flex;
-		align-items: center;
-		padding: 5px 10px 5px 5px;
-		background-color: #fff;
-		margin-bottom: 10px;
-		border-radius: 10px;
-
-		&-img {
-			width: 80px;
-			height: 80px;
-			margin-right: 10px;
-		}
-
-		&-info {
-			display: flex;
-			flex-direction: column;
-			font-size: 0.8rem;
-			max-width: 30%;
-		}
-
-		&-total-cost {
-			font-weight: 700;
-		}
-
-		&-size {
-			color: rgb(163, 163, 163);
-		}
-
-		&-delete {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 0;
-			background: none;
-			border: none;
-			color: rgb(163, 163, 163);
-			cursor: pointer;
-
-			&:hover {
-				color: #000;
-			}
-		}
-	}
-
-	&__counter {
-		margin-left: auto;
-		margin-right: 10px;
 	}
 
 	&__total {
